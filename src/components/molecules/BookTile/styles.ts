@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
   authorSection: {
@@ -6,7 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  authorText: {color: '#333', fontSize: 12},
+  authorText: {color: colors.textDark, fontSize: 12},
   contentContainer: {
     flex: 1,
     gap: 8,
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     paddingVertical: 2,
   },
-  descriptionText: {color: '#333'},
+  descriptionText: {color: colors.textDark},
   image: {
     width: 80,
     height: undefined,
@@ -22,8 +23,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 8,
     borderBottomRightRadius: 8,
   },
-  publisherText: {color: '#333', fontSize: 9},
-  titleText: {fontSize: 16, fontWeight: 'bold', color: '#333'},
+  publisherText: {color: colors.textDark, fontSize: 9},
+  titleText: {fontSize: 16, fontWeight: 'bold', color: colors.textDark},
   wrapper: {flexDirection: 'row', gap: 16},
 });
 

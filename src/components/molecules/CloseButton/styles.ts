@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,7 +8,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 8,
   },
-  icon: {fontSize: 16, color: '#333', padding: 8},
+  icon: {fontSize: 16, color: colors.textDark, padding: 8},
 });
 
 export default styles;
