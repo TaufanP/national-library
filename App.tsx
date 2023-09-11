@@ -5,16 +5,9 @@
  * @format
  */
 
-import React, {useEffect} from 'react';
-import {View} from 'react-native';
-import useBooksViewModel from './src/core/presentation/useBooksViewModel';
+import React from 'react';
+import BookList from './src/components/template/BookList';
 
 export default function () {
-  const {books} = useBooksViewModel();
-
-  useEffect(() => {
-    console.log(books);
-  }, [books]);
-
-  return <View></View>;
+  return <BookList />;
 }
