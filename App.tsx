@@ -7,23 +7,14 @@
 
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
-import {BookRepositoryImp} from './src/core/data/repositoriesImp/book';
-import {BookDataSourceImp} from './src/core/data/dataSourcesImp/book';
-import booksCase from './src/core/domain/useCases/book/';
+import useBooksViewModel from './src/core/presentation/useBooksViewModel';
 
 export default function () {
-  const bookDataSource = new BookDataSourceImp();
-  const bookRepository = new BookRepositoryImp(bookDataSource);
-  const bookUseCase = booksCase(bookRepository);
-
-  async function getBooks() {
-    const result = await bookUseCase.getBooks();
-    console.log(result);
-  }
+  const {books} = useBooksViewModel();
 
   useEffect(() => {
-    getBooks();
-  }, []);
+    console.log(books);
+  }, [books]);
 
   return <View></View>;
 }
