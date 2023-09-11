@@ -2,7 +2,7 @@ import {ScrollView, View} from 'react-native';
 import Screen from '../../atoms/Screen';
 import CloseButton from '../../molecules/CloseButton';
 import FluidButton from '../../molecules/FluidButton';
-import colors from '../../../constants/colors';
+import styles from './styles';
 
 interface EditBookProps {
   toggleEditing(): void;
@@ -13,16 +13,7 @@ export default function ({toggleEditing}: EditBookProps) {
     <Screen>
       <CloseButton onPress={toggleEditing} />
       <ScrollView></ScrollView>
-      <View
-        style={{
-          backgroundColor: colors.white,
-          bottom: 16,
-          flex: 1,
-          padding: 16,
-          position: 'absolute',
-          width: '100%',
-        }}
-      >
+      <View style={styles.buttonContainer}>
         <FluidButton label="Save" />
       </View>
     </Screen>

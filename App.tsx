@@ -1,26 +1,14 @@
 import BookList from './src/components/template/BookList';
 import EditBook from './src/components/template/EditBook';
+import useAppViewModel from './src/core/presentation/useAppViewModel';
 import useBooksViewModel from './src/core/presentation/useBooksViewModel';
 
 export default function () {
-  const {books, isEditing, toggleEditing} = useBooksViewModel();
+  const {isEditing, toggleEditing} = useAppViewModel();
 
   if (!isEditing) {
-    return (
-      <EditBook
-        {...{
-          toggleEditing,
-        }}
-      />
-    );
+    return <EditBook toggleEditing={toggleEditing} />;
   }
 
-  return (
-    <BookList
-      {...{
-        books,
-        toggleEditing,
-      }}
-    />
-  );
+  return <BookList toggleEditing={toggleEditing} />;
 }
