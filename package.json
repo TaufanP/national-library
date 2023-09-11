@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
-    "server": "json-server --watch ./src/server/db.json --port 3005",
+    "server": "json-server --watch ./src/server/db.json --port 3005 --host 192.168.1.16",
     "start": "react-native start",
     "test": "jest"
   },
