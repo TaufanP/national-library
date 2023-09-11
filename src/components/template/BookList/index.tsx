@@ -1,17 +1,20 @@
 import {View} from 'react-native';
-import useBooksViewModel from '../../../core/presentation/useBooksViewModel';
 import Screen from '../../atoms/Screen';
 import FloatingButton from '../../molecules/FloatingButton';
 import BookTileRenderer from '../../organisms/BookTileRenderer';
+import {Book} from '../../../core/domain/models/book';
 
-export default function () {
-  const {books} = useBooksViewModel();
+interface BookListProps {
+  books: Book[];
+  toggleEditing(): void;
+}
 
+export default function ({books, toggleEditing}: BookListProps) {
   return (
     <Screen>
       <BookTileRenderer data={books} />
       <View style={{paddingVertical: 16}} />
-      <FloatingButton />
+      <FloatingButton onPress={toggleEditing} />
     </Screen>
   );
 }

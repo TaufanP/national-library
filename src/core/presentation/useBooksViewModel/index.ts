@@ -4,15 +4,20 @@ import {Book} from '../../domain/models/book';
 
 export default function () {
   const [books, booksSet] = useState<Book[]>([]);
+  const [isEditing, isEditingSet] = useState<boolean>(false);
+
+  useEffect(() => {
+    getBooks();
+  }, []);
 
   async function getBooks() {
     const result = await bookUseCase.getBooks();
     booksSet(result);
   }
 
-  useEffect(() => {
-    getBooks();
-  }, []);
+  function toggleEditing() {
+    isEditingSet(c => !c);
+  }
 
-  return {books};
+  return {books, isEditing, toggleEditing};
 }
