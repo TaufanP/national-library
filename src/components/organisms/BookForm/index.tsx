@@ -1,6 +1,6 @@
 import {View} from 'react-native';
+import useBookFormViewModel from '../../../core/presentation/useBookFormViewModel';
 import TextField from '../../atoms/TextField';
-import {useEffect, useState} from 'react';
 
 export interface BookForm {
   title: string;
@@ -10,22 +10,12 @@ export interface BookForm {
   cover: string;
 }
 
-interface BookFormProps {
+export interface BookFormProps {
   onChangeForm(form: BookForm): void;
 }
 
 export default function ({onChangeForm}: BookFormProps) {
-  const [form, formSet] = useState<BookForm>();
-
-  useEffect(() => {
-    const debounce = setTimeout(() => {
-      if (form) onChangeForm(form);
-    }, 1000);
-
-    return () => {
-      clearTimeout(debounce);
-    };
-  }, [form]);
+  const {form, onChangeText} = useBookFormViewModel(onChangeForm);
 
   return (
     <View style={{gap: 16}}>
@@ -58,14 +48,4 @@ export default function ({onChangeForm}: BookFormProps) {
       />
     </View>
   );
-
-  function onChangeText(type: keyof BookForm) {
-    return function (text: string) {
-      formSet(current => {
-        const copy = JSON.parse(JSON.stringify(current || {}));
-        copy[type] = text;
-        return copy;
-      });
-    };
-  }
 }
