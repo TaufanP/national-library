@@ -10,6 +10,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
   },
+
+  scroll: {paddingHorizontal: 16},
 });
 
 export default styles;
