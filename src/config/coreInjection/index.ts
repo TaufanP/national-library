@@ -4,6 +4,6 @@ import booksCase from '../../core/domain/useCases/book';
 
 const bookDataSource = new BookDataSourceImp();
 const bookRepository = new BookRepositoryImp(bookDataSource);
-const bookUseCase = booksCase(bookRepository);
+const booksUseCase = booksCase(bookRepository);
 
-export {bookUseCase};
+export {booksUseCase};

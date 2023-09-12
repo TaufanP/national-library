@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {bookUseCase} from '../../../config/coreInjection';
+import {booksUseCase} from '../../../config/coreInjection';
 import {Book} from '../../domain/models/book';
 
 export default function () {
@@ -10,7 +10,7 @@ export default function () {
   }, []);
 
   async function getBooks() {
-    const result = await bookUseCase.getBooks();
+    const result = await booksUseCase.getBooks();
     booksSet(result);
   }
 
