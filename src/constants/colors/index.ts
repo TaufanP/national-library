@@ -1,5 +1,6 @@
 export default {
   backgroundLight: '#FEFEFE',
+  borderDark: '#ddd',
 
   primary: '#3586f6',
 
