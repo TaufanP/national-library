@@ -5,6 +5,7 @@ import {BookDataSource} from '../dataSources/book';
 export class BookDataSourceImp implements BookDataSource {
   async addBook(book: Book): Promise<void> {
     await axios.post('http://192.168.1.16:3005/books', {
+      id: book.id,
       author: book.author || 'John Doe',
       cover: book.cover || 'https://picsum.photos/200',
       description:
