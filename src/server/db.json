@@ -7,6 +7,14 @@
       "description": "There are thousand ways to achieve your dreams, but do you know that you only need one? No one can help you except yourself.",
       "publisher": "Paper Inc.",
       "title": "How to Get Your First 1 Million USD"
+    },
+    {
+      "author": "John Doe",
+      "cover": "https://picsum.photos/200",
+      "description": "Never back down never what? NEVER GIVE UP!",
+      "publisher": "Dabozo",
+      "title": "Never Give Up",
+      "id": "Qh_xQ3p"
     }
   ]
 }

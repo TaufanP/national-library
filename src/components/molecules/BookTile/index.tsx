@@ -11,10 +11,14 @@ export default function ({author, cover, description, publisher, title}: Book) {
         <Image source={{uri: cover}} style={styles.image} />
       </View>
       <View style={styles.contentContainer}>
-        <Text style={styles.titleText}>{title}</Text>
-        <Text style={styles.descriptionText} numberOfLines={2}>
-          {description}
-        </Text>
+        <View>
+          <Text style={styles.titleText} numberOfLines={2}>
+            {title}
+          </Text>
+          <Text style={styles.descriptionText} numberOfLines={2}>
+            {description}
+          </Text>
+        </View>
         <View style={styles.authorSection}>
           <Text style={styles.authorText} numberOfLines={1}>
             {author}

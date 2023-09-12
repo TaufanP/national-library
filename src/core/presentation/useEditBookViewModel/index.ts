@@ -1,11 +1,19 @@
 import {useState} from 'react';
 import {BookForm} from '../../../components/organisms/BookForm';
+import {booksUseCase} from '../../../config/coreInjection';
 
-export default function () {
+interface EditBookViewModel {
+  onSuccessAdd?(): void;
+}
+
+export default function ({onSuccessAdd}: EditBookViewModel) {
   const [form, formSet] = useState<BookForm>();
 
   function addBook() {
-    console.log(form);
+    if (form) {
+      booksUseCase.addBook({...form, id: new Date().getTime().toString()});
+      onSuccessAdd && onSuccessAdd();
+    }
   }
 
   function onChangeForm(form: BookForm) {

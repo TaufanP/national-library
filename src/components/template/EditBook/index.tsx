@@ -11,7 +11,9 @@ interface EditBookProps {
 }
 
 export default function ({toggleEditing}: EditBookProps) {
-  const {addBook, onChangeForm} = useEditBookViewModel();
+  const {addBook, onChangeForm} = useEditBookViewModel({
+    onSuccessAdd: toggleEditing,
+  });
 
   return (
     <Screen>
