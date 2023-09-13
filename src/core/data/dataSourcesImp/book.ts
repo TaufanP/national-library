@@ -21,4 +21,8 @@ export class BookDataSourceImp implements BookDataSource {
 
     return response.data;
   }
+
+  async updateBook(book: Book): Promise<void> {
+    await axios.patch(`http://192.168.1.16:3005/books/${book.id}`, book);
+  }
 }

@@ -1,9 +1,10 @@
 import {View} from 'react-native';
+import {Book} from '../../../core/domain/models/book';
 import useBookFormViewModel from '../../../core/presentation/useBookFormViewModel';
 import TextField from '../../atoms/TextField';
-import {Book} from '../../../core/domain/models/book';
 
 export interface BookForm {
+  id?: string;
   title: string;
   description: string;
   author: string;

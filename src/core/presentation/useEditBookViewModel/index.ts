@@ -16,6 +16,8 @@ export default function ({onSuccess}: EditBookViewModel) {
     }
   }
 
+  function deleteBook() {}
+
   function onChangeForm(form: BookForm) {
     formSet(form);
   }
@@ -24,5 +26,12 @@ export default function ({onSuccess}: EditBookViewModel) {
     onSuccess && onSuccess();
   }
 
-  return {addBook, onChangeForm};
+  function updateBook() {
+    if (form) {
+      booksUseCase.updateBook({...form, id: form?.id || ''});
+      onPostAction();
+    }
+  }
+
+  return {addBook, deleteBook, onChangeForm, updateBook};
 }

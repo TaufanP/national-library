@@ -14,8 +14,8 @@ interface EditBookProps {
 }
 
 export default function ({toggleEditing, book}: EditBookProps) {
-  const {addBook, onChangeForm} = useEditBookViewModel({
-    onSuccess: toggleEditing,
+  const {addBook, deleteBook, onChangeForm, updateBook} = useEditBookViewModel({
+    onSuccess: toggleEditing(),
   });
 
   const headlineText = !book ? 'Add Book' : 'Edit Book';
@@ -35,8 +35,8 @@ export default function ({toggleEditing, book}: EditBookProps) {
           <FluidButton label="Add" onPress={addBook} />
         ) : (
           <>
-            <FluidButton label="Delete" isDanger />
-            <FluidButton label="Save" />
+            <FluidButton label="Delete" isDanger onPress={deleteBook} />
+            <FluidButton label="Save" onPress={updateBook} />
           </>
         )}
       </View>

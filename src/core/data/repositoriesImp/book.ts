@@ -12,4 +12,8 @@ export class BookRepositoryImp implements BookRepository {
   async getBooks(): Promise<Book[]> {
     return await this.dataSource.getBooks();
   }
+
+  async updateBook(book: Book): Promise<void> {
+    return await this.dataSource.updateBook(book);
+  }
 }
