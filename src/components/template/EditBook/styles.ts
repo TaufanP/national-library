@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     padding: 16,
     position: 'absolute',
     width: '100%',
+    gap: 16,
   },
 
   scroll: {paddingHorizontal: 16},

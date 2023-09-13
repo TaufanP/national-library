@@ -32,7 +32,10 @@ export default function ({toggleEditing, book}: EditBookProps) {
         {!book ? (
           <FluidButton label="Add" onPress={addBook} />
         ) : (
-          <FluidButton label="Save" />
+          <>
+            <FluidButton label="Delete" isDanger />
+            <FluidButton label="Save" />
+          </>
         )}
       </View>
     </Screen>
