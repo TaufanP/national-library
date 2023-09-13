@@ -1,12 +1,12 @@
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
+import {Book} from '../../../core/domain/models/book';
 import useEditBookViewModel from '../../../core/presentation/useEditBookViewModel';
+import Headline from '../../atoms/Headline';
 import Screen from '../../atoms/Screen';
 import CloseButton from '../../molecules/CloseButton';
 import FluidButton from '../../molecules/FluidButton';
 import BookForm from '../../organisms/BookForm';
 import styles from './styles';
-import {Book} from '../../../core/domain/models/book';
-import colors from '../../../constants/colors';
 
 interface EditBookProps {
   book?: Book;
@@ -18,8 +18,6 @@ export default function ({toggleEditing, book}: EditBookProps) {
     onSuccess: toggleEditing,
   });
 
-  console.log({book});
-
   return (
     <Screen>
       <CloseButton onPress={toggleEditing()} />
@@ -27,24 +25,14 @@ export default function ({toggleEditing, book}: EditBookProps) {
         contentContainerStyle={styles.scroll}
         showsVerticalScrollIndicator={false}
       >
-        <Text
-          style={{
-            fontSize: 16,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            color: colors.textDark,
-            marginBottom: 24,
-          }}
-        >
-          {!book ? 'Add Book' : 'Edit Book'}
-        </Text>
+        <Headline label={!book ? 'Add Book' : 'Edit Book'} />
         <BookForm onChangeForm={onChangeForm} book={book} />
       </ScrollView>
       <View style={styles.buttonContainer}>
         {!book ? (
           <FluidButton label="Add" onPress={addBook} />
         ) : (
-          <FluidButton label="Save" onPress={addBook} />
+          <FluidButton label="Save" />
         )}
       </View>
     </Screen>
