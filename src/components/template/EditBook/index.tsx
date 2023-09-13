@@ -1,5 +1,6 @@
 import {ScrollView, View} from 'react-native';
 import {Book} from '../../../core/domain/models/book';
+import {BooksCase} from '../../../core/domain/useCases/book';
 import useEditBookViewModel from '../../../core/presentation/useEditBookViewModel';
 import Headline from '../../atoms/Headline';
 import Screen from '../../atoms/Screen';
@@ -11,11 +12,13 @@ import styles from './styles';
 interface EditBookProps {
   book?: Book;
   toggleEditing(): () => void;
+  booksCase: BooksCase;
 }
 
-export default function ({toggleEditing, book}: EditBookProps) {
+export default function ({toggleEditing, book, booksCase}: EditBookProps) {
   const {addBook, deleteBook, onChangeForm, updateBook} = useEditBookViewModel({
     onSuccess: toggleEditing(),
+    booksCase,
   });
 
   const headlineText = !book ? 'Add Book' : 'Edit Book';

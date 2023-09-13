@@ -1,7 +1,7 @@
 import {Book} from '../../models/book';
 import {BookRepository} from '../../repositories/book';
 
-export default function (repository: BookRepository) {
+function booksCase(repository: BookRepository) {
   return {
     addBook: (book: Book) => repository.addBook(book),
     deleteBook: (id: Book['id']) => repository.deleteBook(id),
@@ -9,3 +9,7 @@ export default function (repository: BookRepository) {
     updateBook: (book: Book) => repository.updateBook(book),
   };
 }
+
+export type BooksCase = ReturnType<typeof booksCase>;
+
+export default booksCase;

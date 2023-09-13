@@ -1,24 +1,25 @@
 import {useState} from 'react';
 import {BookForm} from '../../../components/organisms/BookForm';
-import {booksUseCase} from '../../../config/coreInjection';
+import {BooksCase} from '../../domain/useCases/book';
 
 interface EditBookViewModel {
   onSuccess?(): void;
+  booksCase: BooksCase;
 }
 
-export default function ({onSuccess}: EditBookViewModel) {
+export default function ({onSuccess, booksCase}: EditBookViewModel) {
   const [form, formSet] = useState<BookForm>();
 
   function addBook() {
     if (form) {
-      booksUseCase.addBook({id: new Date().getTime().toString(), ...form});
+      booksCase.addBook({id: new Date().getTime().toString(), ...form});
       onPostAction();
     }
   }
 
   function deleteBook() {
     if (form?.id) {
-      booksUseCase.deleteBook(form['id']);
+      booksCase.deleteBook(form['id']);
       onPostAction();
     }
   }
@@ -33,7 +34,7 @@ export default function ({onSuccess}: EditBookViewModel) {
 
   function updateBook() {
     if (form) {
-      booksUseCase.updateBook({...form, id: form?.id || ''});
+      booksCase.updateBook({...form, id: form?.id || ''});
       onPostAction();
     }
   }
