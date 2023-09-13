@@ -10,19 +10,19 @@ interface FluidButtonProps {
 }
 
 export default function ({isDanger, label, onPress}: FluidButtonProps) {
+  const buttonStyle = [
+    styles.container,
+    isDanger ? styles.danger : styles.basic,
+  ];
+
+  const textStyle = [
+    styles.buttonText,
+    isDanger ? styles.dangerText : styles.basicText,
+  ];
+
   return (
-    <Button
-      onPress={onPress}
-      style={[styles.container, isDanger ? styles.danger : styles.basic]}
-    >
-      <Text
-        style={[
-          styles.buttonText,
-          isDanger ? styles.dangerText : styles.basicText,
-        ]}
-      >
-        {label}
-      </Text>
+    <Button onPress={onPress} style={buttonStyle}>
+      <Text style={textStyle}>{label}</Text>
     </Button>
   );
 }

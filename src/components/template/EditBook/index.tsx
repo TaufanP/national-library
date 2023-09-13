@@ -18,6 +18,8 @@ export default function ({toggleEditing, book}: EditBookProps) {
     onSuccess: toggleEditing,
   });
 
+  const headlineText = !book ? 'Add Book' : 'Edit Book';
+
   return (
     <Screen>
       <CloseButton onPress={toggleEditing()} />
@@ -25,7 +27,7 @@ export default function ({toggleEditing, book}: EditBookProps) {
         contentContainerStyle={styles.scroll}
         showsVerticalScrollIndicator={false}
       >
-        <Headline label={!book ? 'Add Book' : 'Edit Book'} />
+        <Headline label={headlineText} />
         <BookForm onChangeForm={onChangeForm} book={book} />
       </ScrollView>
       <View style={styles.buttonContainer}>
