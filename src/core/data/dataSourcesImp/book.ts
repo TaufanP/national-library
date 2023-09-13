@@ -1,10 +1,10 @@
-import axios from 'axios';
+import apiInstance from '../../../config/apiClient';
 import {Book} from '../../domain/models/book';
 import {BookDataSource} from '../dataSources/book';
 
 export class BookDataSourceImp implements BookDataSource {
   async addBook(book: Book): Promise<void> {
-    await axios.post('http://192.168.1.16:3005/books', {
+    await apiInstance.post('/books', {
       id: book.id,
       author: book.author || 'John Doe',
       cover: book.cover || 'https://picsum.photos/200',
@@ -17,16 +17,16 @@ export class BookDataSourceImp implements BookDataSource {
   }
 
   async deleteBook(id: string): Promise<void> {
-    await axios.delete(`http://192.168.1.16:3005/books/${id}`);
+    await apiInstance.delete(`/books/${id}`);
   }
 
   async getBooks(): Promise<Book[]> {
-    const response = await axios.get('http://192.168.1.16:3005/books');
+    const response = await apiInstance.get('/books');
 
     return response.data;
   }
 
   async updateBook(book: Book): Promise<void> {
-    await axios.patch(`http://192.168.1.16:3005/books/${book.id}`, book);
+    await apiInstance.patch(`/books/${book.id}`, book);
   }
 }
