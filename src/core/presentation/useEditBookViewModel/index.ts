@@ -11,7 +11,7 @@ export default function ({onSuccess}: EditBookViewModel) {
 
   function addBook() {
     if (form) {
-      booksUseCase.addBook({...form, id: new Date().getTime().toString()});
+      booksUseCase.addBook({id: new Date().getTime().toString(), ...form});
       onPostAction();
     }
   }
