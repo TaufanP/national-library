@@ -16,6 +16,10 @@ export class BookDataSourceImp implements BookDataSource {
     });
   }
 
+  async deleteBook(id: string): Promise<void> {
+    await axios.delete(`http://192.168.1.16:3005/books/${id}`);
+  }
+
   async getBooks(): Promise<Book[]> {
     const response = await axios.get('http://192.168.1.16:3005/books');
 

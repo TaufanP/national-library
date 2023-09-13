@@ -16,7 +16,12 @@ export default function ({onSuccess}: EditBookViewModel) {
     }
   }
 
-  function deleteBook() {}
+  function deleteBook() {
+    if (form?.id) {
+      booksUseCase.deleteBook(form['id']);
+      onPostAction();
+    }
+  }
 
   function onChangeForm(form: BookForm) {
     formSet(form);
