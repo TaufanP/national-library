@@ -1,10 +1,12 @@
-import apiInstance from '../../../config/apiClient';
+import {ApiHelper} from '../../../config/apiClient';
 import {Book} from '../../domain/models/book';
 import {BookDataSource} from '../dataSources/book';
 
 export class BookDataSourceImp implements BookDataSource {
+  constructor(private apiInstance: ApiHelper) {}
+
   async addBook(book: Book): Promise<void> {
-    await apiInstance.post('/books', {
+    await this.apiInstance.post('/books', {
       id: book.id,
       author: book.author || 'John Doe',
       cover: book.cover || 'https://picsum.photos/200',
@@ -17,16 +19,16 @@ export class BookDataSourceImp implements BookDataSource {
   }
 
   async deleteBook(id: string): Promise<void> {
-    await apiInstance.delete(`/books/${id}`);
+    await this.apiInstance.delete(`/books/${id}`);
   }
 
   async getBooks(): Promise<Book[]> {
-    const response = await apiInstance.get('/books');
+    const response = await this.apiInstance.get('/books');
 
     return response.data;
   }
 
   async updateBook(book: Book): Promise<void> {
-    await apiInstance.patch(`/books/${book.id}`, book);
+    await this.apiInstance.patch(`/books/${book.id}`, book);
   }
 }
