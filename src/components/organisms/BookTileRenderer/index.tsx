@@ -5,20 +5,30 @@ import styles from './styles';
 
 interface BookTileRendererProps {
   data: Book[];
+  onPress?(book: Book): () => void;
 }
 
-export default function ({data}: BookTileRendererProps) {
+export default function ({data, onPress}: BookTileRendererProps) {
   return (
     <FlatList
       contentContainerStyle={styles.container}
       data={data}
-      ItemSeparatorComponent={() => <View style={{paddingVertical: 8}} />}
+      ItemSeparatorComponent={ItemSeparatorComponent}
       keyExtractor={book => book.id}
-      renderItem={renderBooks}
+      renderItem={renderBooks(onPress)}
     />
   );
 }
 
-function renderBooks({item: book}: {item: Book}) {
-  return <BookTile {...book} />;
+function renderBooks(onPress: BookTileRendererProps['onPress']) {
+  return function ({item: book}: {item: Book}) {
+    function onTap() {
+      onPress && onPress(book)();
+    }
+    return <BookTile {...book} onPress={onTap} />;
+  };
+}
+
+function ItemSeparatorComponent() {
+  return <View style={{paddingVertical: 8}} />;
 }

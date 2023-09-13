@@ -1,8 +1,14 @@
 import {useEffect, useState} from 'react';
 import {BookForm, BookFormProps} from '../../../components/organisms/BookForm';
+import {Book} from '../../domain/models/book';
 
-export default function (onChangeForm: BookFormProps['onChangeForm']) {
-  const [form, formSet] = useState<BookForm>();
+interface BookFormViewModel {
+  book?: Book;
+  onChangeForm: BookFormProps['onChangeForm'];
+}
+
+export default function ({book, onChangeForm}: BookFormViewModel) {
+  const [form, formSet] = useState<BookForm | undefined>(book);
 
   useEffect(() => {
     const debounce = setTimeout(() => {

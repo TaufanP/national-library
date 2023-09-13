@@ -1,6 +1,7 @@
 import {View} from 'react-native';
 import useBookFormViewModel from '../../../core/presentation/useBookFormViewModel';
 import TextField from '../../atoms/TextField';
+import {Book} from '../../../core/domain/models/book';
 
 export interface BookForm {
   title: string;
@@ -11,11 +12,12 @@ export interface BookForm {
 }
 
 export interface BookFormProps {
+  book?: Book;
   onChangeForm(form: BookForm): void;
 }
 
-export default function ({onChangeForm}: BookFormProps) {
-  const {form, onChangeText} = useBookFormViewModel(onChangeForm);
+export default function ({book, onChangeForm}: BookFormProps) {
+  const {form, onChangeText} = useBookFormViewModel({onChangeForm, book});
 
   return (
     <View style={{gap: 16}}>

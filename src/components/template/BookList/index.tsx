@@ -6,7 +6,7 @@ import {Book} from '../../../core/domain/models/book';
 import useBooksViewModel from '../../../core/presentation/useBooksViewModel';
 
 interface BookListProps {
-  toggleEditing(): void;
+  toggleEditing(): () => void;
 }
 
 export default function ({toggleEditing}: BookListProps) {
@@ -14,9 +14,9 @@ export default function ({toggleEditing}: BookListProps) {
 
   return (
     <Screen>
-      <BookTileRenderer data={books} />
+      <BookTileRenderer data={books} onPress={toggleEditing} />
       <View style={{paddingVertical: 16}} />
-      <FloatingButton onPress={toggleEditing} />
+      <FloatingButton onPress={toggleEditing()} />
     </Screen>
   );
 }

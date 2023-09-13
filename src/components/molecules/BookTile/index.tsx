@@ -4,9 +4,20 @@ import {Book} from '../../../core/domain/models/book';
 import Button from '../../atoms/Button';
 import styles from './styles';
 
-export default function ({author, cover, description, publisher, title}: Book) {
+interface BookTileProps extends Book {
+  onPress?(): void;
+}
+
+export default function ({
+  author,
+  cover,
+  description,
+  publisher,
+  title,
+  onPress,
+}: BookTileProps) {
   return (
-    <Button style={styles.wrapper}>
+    <Button style={styles.wrapper} onPress={onPress}>
       <View>
         <Image source={{uri: cover}} style={styles.image} />
       </View>

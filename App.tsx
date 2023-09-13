@@ -4,10 +4,10 @@ import useAppViewModel from './src/core/presentation/useAppViewModel';
 import useBooksViewModel from './src/core/presentation/useBooksViewModel';
 
 export default function () {
-  const {isEditing, toggleEditing} = useAppViewModel();
+  const {isEditing, toggleEditing, selectedBook} = useAppViewModel();
 
   if (isEditing) {
-    return <EditBook toggleEditing={toggleEditing} />;
+    return <EditBook toggleEditing={toggleEditing} book={selectedBook} />;
   }
 
   return <BookList toggleEditing={toggleEditing} />;

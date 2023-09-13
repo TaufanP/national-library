@@ -8,7 +8,7 @@ export default function ({style, maxLength, ...props}: TextFieldProps) {
     <TextInput
       style={[styles.input, style]}
       placeholderTextColor={'#888'}
-      maxLength={maxLength || 30}
+      maxLength={maxLength || 40}
       {...props}
     />
   );
